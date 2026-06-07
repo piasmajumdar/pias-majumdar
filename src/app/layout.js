@@ -1,5 +1,15 @@
 import Providers from "./providers";
+import CustomCursor from "@/components/CustomCursor";
+import Preloader from "@/components/Preloader";
 import "./globals.css";
+import { Plus_Jakarta_Sans } from "next/font/google";
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+});
 
 export const metadata = {
   title: "Pias Majumdar | AI/ML Engineer & Full Stack Developer",
@@ -19,8 +29,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="h-full scroll-smooth antialiased" suppressHydrationWarning>
-      <body className="min-h-full bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col">
+    <html lang="en" className={`h-full scroll-smooth antialiased ${plusJakarta.variable}`} suppressHydrationWarning>
+      <body className="min-h-full flex flex-col">
+        <Preloader />
+        <CustomCursor />
         <Providers>{children}</Providers>
       </body>
     </html>

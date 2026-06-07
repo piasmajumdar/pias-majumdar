@@ -1,105 +1,193 @@
-'use client';
+"use client";
 
+import Link from "next/link";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
-import ThemeToggle from "./ThemeToggle";
-import { Menu, X, Cpu } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight } from "@gravity-ui/icons";
+import { Menu, X } from "lucide-react";
 
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Timeline", href: "#timeline" },
-  { label: "Contact", href: "#contact" }
+const navItems = [
+  "Home",
+  "About",
+  "Skills",
+  "Projects",
+  "Timeline",
+  // "Testimonials",
+  "Contact",
 ];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Close mobile menu when scrolling past a certain point
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    if (hidden && isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+    }
+  }, [hidden]);
+
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+
+    if (!previous) return;
+
+    if (latest > previous && latest > 150) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
 
   return (
-    <>
-      <header
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-          scrolled
-            ? "glass border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm"
-            : "bg-transparent"
-        }`}
+    <motion.header
+      initial={{ y: -80, opacity: 0 }}
+      animate={{
+        y: hidden ? -120 : 0,
+        opacity: 1,
+      }}
+      transition={{
+        duration: 0.35,
+      }}
+      className="fixed top-6 left-0 right-0 z-500 px-6"
+    >
+      <div
+        className="
+          mx-auto
+          max-w-7xl
+          rounded-[28px]
+          border
+          border-white/60
+          bg-white/85
+          backdrop-blur-xl
+          shadow-[0_8px_40px_rgba(0,0,0,0.08)]
+        "
       >
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          {/* Logo / Brand Name */}
-          <a href="#" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-rose-500 to-red-600 flex items-center justify-center text-white shadow-sm shadow-red-500/20">
-              <Cpu className="w-4.5 h-4.5" />
-            </div>
-            <span className="font-display font-bold text-lg tracking-tight text-slate-900 dark:text-white group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
-              PIAS MAJUMDAR
-            </span>
-          </a>
+        <div className="flex h-24 items-center justify-between px-8">
+          {/* Logo */}
+          <Link href="/">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center"
+            >
+              <h1 className="text-5xl font-bold tracking-tight text-orange-600">
+                PM
+              </h1>
+            </motion.div>
+          </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-sm font-medium text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors relative py-1"
-              >
-                {link.label}
-              </a>
-            ))}
-            <ThemeToggle />
+          {/* Navigation */}
+          <nav className="hidden lg:flex items-center gap-14">
+            {navItems.map((item, index) => {
+              const active = item === "Home";
+
+              return (
+                <Link
+                  key={item}
+                  href={item === "Home" ? "/" : `/#${item.toLowerCase()}`}
+                  className="relative"
+                >
+                  <span
+                    className={`text-[18px] font-medium transition-all ${active
+                      ? "text-orange-600"
+                      : "text-zinc-800 hover:text-orange-600"
+                      }`}
+                  >
+                    {item}
+                  </span>
+
+                  {active && (
+                    <motion.span
+                      layoutId="navbar-indicator"
+                      className="
+                        absolute
+                        left-1/2
+                        -bottom-4
+                        h-[3px]
+                        w-8
+                        -translate-x-1/2
+                        rounded-full
+                        bg-orange-600
+                      "
+                    />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
-          {/* Mobile Actions (Toggle + Menu Button) */}
-          <div className="flex md:hidden items-center gap-4">
-            <ThemeToggle />
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-1.5 rounded-lg text-slate-600 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Mobile Menu Drawer */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-16 z-40 md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md px-6 py-8 flex flex-col gap-6 shadow-lg"
+          {/* CTA */}
+          <motion.button
+            whileHover={{
+              scale: 1.03,
+            }}
+            whileTap={{
+              scale: 0.97,
+            }}
+            className="
+              hidden
+              lg:flex
+              items-center
+              gap-3
+              rounded-2xl
+              bg-gradient-to-r
+              from-orange-600
+              to-red-600
+              px-8
+              py-4
+              text-white
+              font-medium
+              shadow-lg
+            "
           >
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-lg font-semibold text-slate-800 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+            <span>Let's Connect</span>
+
+            <ArrowUpRight
+              width={18}
+              height={18}
+            />
+          </motion.button>
+
+          {/* Mobile Menu Toggle Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-3 bg-orange-50 text-orange-600 rounded-xl hover:bg-orange-100 transition-colors"
+          >
+            {isMobileMenuOpen ? <X size={26} strokeWidth={2.5} /> : <Menu size={26} strokeWidth={2.5} />}
+          </button>
+        </div>
+
+        {/* Mobile Dropdown Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden overflow-hidden border-t border-orange-100/50"
+            >
+              <div className="flex flex-col px-8 py-8 gap-6 bg-white/40">
+                {navItems.map((item) => (
+                  <Link
+                    key={item}
+                    href={item === "Home" ? "/" : `/#${item.toLowerCase()}`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-2xl font-semibold text-zinc-800 hover:text-orange-600 transition-colors"
+                  >
+                    {item}
+                  </Link>
+                ))}
+                <button className="flex items-center justify-center gap-3 mt-6 rounded-2xl bg-gradient-to-r from-orange-600 to-red-600 px-6 py-4 text-white font-medium shadow-md w-full">
+                  <span>Let's Connect</span>
+                  <ArrowUpRight width={18} height={18} />
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.header>
   );
 }

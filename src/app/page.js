@@ -1,9 +1,7 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import About from "../components/About";
-import FeaturedProjects from "../components/FeaturedProjects";
-import AIProjects from "../components/AIProjects";
-import WebProjects from "../components/WebProjects";
+import Projects from "../components/Projects";
 import Skills from "../components/Skills";
 import Timeline from "../components/Timeline";
 import Achievements from "../components/Achievements";
@@ -13,7 +11,7 @@ import Footer from "../components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-full flex flex-col bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+    <div className="min-h-full flex flex-col">
       {/* Navigation Header */}
       <Navbar />
 
@@ -24,29 +22,24 @@ export default function Home() {
         {/* About Section */}
         <About />
 
-        {/* Featured Projects Slider */}
-        <FeaturedProjects />
-
-        {/* AI & ML Deep Learning Projects Grid */}
-        <AIProjects />
-
-        {/* Full-Stack Web Development Projects Grid */}
-        <WebProjects />
-
         {/* Skills & Proficiency Section */}
         <Skills />
+
+        {/* Unified Projects Showcase */}
+        <Projects />
+
 
         {/* Timeline of Achievements, CSI, Isha Volunteer */}
         <Timeline />
 
         {/* Scholarships & CountUp Stats Section */}
-        <Achievements />
+        {/* <Achievements /> */}
 
         {/* Professional Certifications Grid */}
-        <Certifications />
+        {/* <Certifications /> */}
 
         {/* Contact Form using Web3Forms Server Action */}
-        <Contact />
+        {/* <Contact /> */}
       </main>
 
       {/* Signature Footer */}

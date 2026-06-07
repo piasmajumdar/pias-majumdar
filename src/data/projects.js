@@ -37,38 +37,135 @@ export const projects = [
   },
   {
     id: 4,
-    title: "AI-Powered Car Rental Platform",
+    title: "Car Rental Platform",
     description: "Modern full-stack car rental application featuring secure authentication, booking systems, search filtering, and clean responsive UI/UX.",
     details: "A premium consumer application with a high-performance backend. Built with Next.js, featuring secure JWT-based authentication, real-time availability checking, booking forms, price calculations, and responsive, interactive vehicle catalog grids.",
     tech: ["Next.js", "TailwindCSS", "Node.js", "MongoDB", "JWT", "Express.js", "Vercel"],
     category: "web",
     featured: true,
-    github: "https://github.com/piasmajumdar/ai-car-rental",
-    demo: "#",
+    github: "https://github.com/piasmajumdar/drive-fleet-a09-client",
+    demo: "https://drive-fleet-a09-client.vercel.app/",
     image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 5,
-    title: "Real-time Object & Pose Estimation",
-    description: "Computer vision application for real-time human pose tracking and object detection using MediaPipe and OpenCV.",
-    details: "Developed a lightweight system optimized for edge devices that tracks skeletal joints and classifies object packages in real time. Applied in industrial safety environments to detect human presence near heavy machinery.",
-    tech: ["Python", "OpenCV", "MediaPipe", "Computer Vision", "ResNet", "NumPy"],
-    category: "ai",
-    featured: false,
-    github: "https://github.com/piasmajumdar/realtime-pose-detection",
-    demo: "#",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80"
+    title: "Local Discovery AI",
+    description:
+      "AI-powered local business discovery platform combining geospatial search, recommendation systems, and sentiment analysis.",
+    details:
+      "An intelligent recommendation platform designed to help users discover trustworthy nearby businesses. Features real-time geospatial search, interactive maps, merchant self-listing, hybrid recommendation systems, and a fine-tuned BERT sentiment analysis model trained on Yelp reviews. Includes trust score generation, collaborative filtering, content-based recommendations, geospatial filtering, JWT authentication, OTP email verification, and responsive map-based exploration.",
+    tech: [
+      "Next.js",
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Python",
+      "BERT",
+      "HuggingFace",
+      "Leaflet.js",
+      "JWT",
+      "Tailwind CSS",
+      "OpenStreetMap"
+    ],
+    category: "web",
+    featured: true,
+    github: "https://github.com/piasmajumdar/local-discovery-2",
+    demo: "https://localdiscovery.online/",
+    image: "/projects/local-discovery.png"
   },
+
+  // {
+  //   id: 6,
+  //   title: "DriveFleet",
+  //   description:
+  //     "Full-stack car rental platform with secure authentication, booking systems, vehicle management, and responsive modern UI.",
+  //   details:
+  //     "A production-ready car rental application built with Next.js, Express.js, MongoDB, and BetterAuth. Users can browse vehicles, search and filter cars, make bookings, manage reservations, and create their own listings. Features JWT authentication with HTTPOnly cookies, protected APIs and routes, booking management, MongoDB aggregation operations, SwiperJS integrations, toast notifications, custom error handling, and fully responsive dark/light themed interfaces.",
+  //   tech: [
+  //     "Next.js",
+  //     "Express.js",
+  //     "MongoDB",
+  //     "BetterAuth",
+  //     "JWT",
+  //     "Tailwind CSS",
+  //     "SwiperJS",
+  //     "Node.js"
+  //   ],
+  //   category: "web",
+  //   featured: true,
+  //   github: "https://github.com/piasmajumdar/drivefleet-client",
+  //   demo: "https://drive-fleet-a09-client.vercel.app/",
+  //   image: "/projects/drivefleet.webp"
+  // },
+
   {
-    id: 6,
-    title: "Intelligent SaaS Analytics Dashboard",
-    description: "Enterprise SaaS analytics platform with interactive graphs, usage logs, and secure client-side filters.",
-    details: "An engineering-focused dashboard built to monitor product usage, user retention, and server performance. Features charts with Framer Motion transitions and custom tooltips for rich data exploration.",
-    tech: ["Next.js", "TailwindCSS", "Framer Motion", "REST APIs", "Recharts", "UI/UX Design"],
+    id: 7,
+    title: "Tiles Gallery",
+    description:
+      "Modern full-stack tile showcase platform with authentication, profile management, dynamic search, and responsive design.",
+    details:
+      "A responsive gallery application built with Next.js App Router where users can discover aesthetic tile collections, search by category, view detailed tile information, and manage personal profiles. Includes BetterAuth authentication, protected routes, Google login, profile management, dynamic rendering, SwiperJS integration, custom loading states, and modern UI/UX architecture.",
+    tech: [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "DaisyUI",
+      "HeroUI",
+      "MongoDB",
+      "BetterAuth",
+      "JSON Server",
+      "SwiperJS"
+    ],
+    category: "web",
+    featured: true,
+    github: "https://github.com/piasmajumdar/a08-tiles-gallery-exclusive",
+    demo: "https://a08-tiles-gallery-exclusive.vercel.app/",
+    image: "/projects/tiles-gallery.png"
+  },
+
+  {
+    id: 8,
+    title: "Dragon News",
+    description:
+      "Modern news portal with authentication, article browsing, and responsive reading experience.",
+    details:
+      "A full-stack news platform built with Next.js and MongoDB. Users can browse news content, authenticate securely, access protected features, and enjoy a responsive reading experience. The project focuses on modern authentication workflows, database integration, dynamic content rendering, and scalable frontend architecture.",
+    tech: [
+      "Next.js",
+      "React",
+      "MongoDB",
+      "Node.js",
+      "Authentication",
+      "Tailwind CSS"
+    ],
     category: "web",
     featured: false,
-    github: "https://github.com/piasmajumdar/saas-dashboard",
-    demo: "#",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+    github: "https://github.com/piasmajumdar/next-js-dragon-news-code",
+    demo: "https://next-js-dragon-news-code.vercel.app",
+    image: "/projects/dragon-news.png"
+  },
+  {
+    id: 9,
+    title: "Keen Keeper",
+    description:
+      "Smart friendship management application that helps users track interactions, maintain relationships, and analyze communication patterns.",
+    details:
+      "A modern social relationship tracking platform built with React and Tailwind CSS. Users can manage friends, log interactions such as calls, texts, and video chats, monitor communication frequency, and visualize engagement patterns through interactive analytics dashboards. Features detailed interaction timelines, friendship tracking, and data-driven insights powered by Recharts.",
+    tech: [
+      "React",
+      "JavaScript",
+      "Tailwind CSS",
+      "DaisyUI",
+      "Recharts",
+      "React Icons",
+      "CSS3",
+      "npm"
+    ],
+    category: "web",
+    featured: false,
+    github: "https://github.com/piasmajumdar/keen-keeper",
+    demo: "https://keen-keeper-pias.netlify.app/",
+    image: "/projects/keen-keeper.png"
   }
 ];

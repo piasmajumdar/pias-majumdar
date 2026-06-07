@@ -1,85 +1,172 @@
-'use client';
+"use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { timelineData } from "../data/achievements";
-import { GraduationCap, Users, Heart } from "lucide-react";
+import { GraduationCap, Briefcase, Heart } from "lucide-react";
 
+// Map types to Lucide icons
 const icons = {
   education: GraduationCap,
-  experience: Users,
+  experience: Briefcase,
   volunteer: Heart
 };
 
 export default function Timeline() {
   return (
-    <section id="timeline" className="py-24 bg-white dark:bg-slate-950 scroll-mt-16">
-      <div className="max-w-5xl mx-auto px-6">
-        
+    <section id="timeline" className="relative py-28 overflow-hidden bg-white scroll-mt-24">
+      {/* Background Soft Glows */}
+      <div className="absolute top-[20%] left-0 w-80 h-80 bg-orange-50/60 rounded-full blur-[120px] -z-10" />
+      <div className="absolute bottom-[20%] right-0 w-96 h-96 bg-orange-50/50 rounded-full blur-[140px] -z-10" />
+
+      {/* Decorative Dotted Grid */}
+      <div className="absolute top-10 left-10 w-24 h-24 pointer-events-none -z-10 opacity-20 bg-[radial-gradient(#ff5e14_1.5px,transparent_1.5px)] [background-size:12px_12px]" />
+      <div className="absolute bottom-10 right-10 w-24 h-24 pointer-events-none -z-10 opacity-20 bg-[radial-gradient(#ff5e14_1.5px,transparent_1.5px)] [background-size:12px_12px]" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-20">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-rose-600 dark:text-rose-400 mb-2">
-            Journey & Leadership
-          </h2>
-          <h3 className="text-3xl sm:text-4xl font-display font-bold text-slate-900 dark:text-white">
-            Experience & Education
-          </h3>
-          <div className="w-12 h-1 bg-rose-600 dark:bg-rose-500 rounded-full mt-4" />
-        </div>
-
-        {/* Vertical Timeline Track */}
-        <div className="relative border-l border-slate-200 dark:border-slate-800 ml-4 md:ml-32 space-y-12 pb-4">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center text-center mb-20"
+        >
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-6 h-[1.5px] bg-orange-600/40" />
+            <span className="text-orange-600 font-bold text-xs uppercase tracking-widest">
+              MY JOURNEY
+            </span>
+            <div className="w-6 h-[1.5px] bg-orange-600/40" />
+          </div>
           
-          {timelineData.map((item, idx) => {
-            const Icon = icons[item.type] || Users;
-            
-            return (
-              <div key={item.id} className="relative pl-8 md:pl-12">
-                {/* Node Icon on Track */}
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  className="absolute -left-5 top-1 z-10 w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-500 to-red-600 text-white flex items-center justify-center shadow-md shadow-red-500/20"
-                >
-                  <Icon className="w-5 h-5" />
-                </motion.div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-zinc-900 tracking-tight leading-tight">
+            Education & <span className="text-orange-600">Experience</span>
+          </h2>
+          <p className="mt-4 max-w-2xl text-zinc-500 text-sm md:text-base leading-relaxed font-medium">
+            A chronological timeline of my academic path, professional milestones, and leadership engagements.
+          </p>
+        </motion.div>
 
-                {/* Left Side Label (Only visible on medium and larger screens) */}
-                <div className="absolute left-[-150px] top-2 hidden md:block w-28 text-right">
-                  <span className="text-sm font-semibold text-rose-600 dark:text-rose-400">
-                    {item.period}
-                  </span>
+        {/* Centralized Alternating Timeline */}
+        <div className="relative mt-20 max-w-5xl mx-auto">
+          
+          {/* Central Vertical Line (drawing animation) */}
+          <motion.div 
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute left-6 md:left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-orange-600 via-orange-400 to-orange-100/20 origin-top"
+          />
+
+          <div className="space-y-16">
+            {timelineData.map((item, idx) => {
+              const Icon = icons[item.type] || Briefcase;
+              const isEven = idx % 2 === 0;
+
+              return (
+                <div 
+                  key={item.id} 
+                  className="relative flex flex-col md:flex-row md:justify-between items-center w-full"
+                >
+                  {/* Glowing Icon Node on the Vertical Track */}
+                  <motion.div
+                    initial={{ scale: 0, x: "-50%" }}
+                    whileInView={{ scale: 1, x: "-50%" }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ type: "spring", stiffness: 200, damping: 15, delay: idx * 0.1 }}
+                    className="absolute left-6 md:left-1/2 z-20 w-10 h-10 rounded-full bg-white border-2 border-orange-600 flex items-center justify-center text-orange-600 shadow-[0_0_15px_rgba(234,88,12,0.15)] group hover:bg-orange-600 hover:text-white transition-colors duration-300 cursor-default"
+                  >
+                    <Icon size={16} strokeWidth={2.2} />
+                  </motion.div>
+
+                  {/* alternating columns in DOM to prevent flex-ordering bugs */}
+                  {isEven ? (
+                    <>
+                      {/* Left Column: Card */}
+                      <div className="w-full md:w-[calc(50%-2.5rem)] pl-16 md:pl-0 md:text-right">
+                        <motion.div
+                          initial={{ opacity: 0, x: -45 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ type: "spring", stiffness: 85, damping: 15 }}
+                          whileHover={{ 
+                            y: -6, 
+                            boxShadow: "0 20px 40px -15px rgba(255, 94, 20, 0.06)",
+                            borderColor: "rgba(234, 88, 12, 0.2)"
+                          }}
+                          className="bg-white border border-zinc-100 hover:border-orange-100/60 p-6 md:p-8 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.005)] transition-all duration-300 relative group flex flex-col"
+                        >
+                          {/* Period Badge */}
+                          <div className="flex mb-4 md:justify-end justify-start">
+                            <span className="inline-block px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase text-orange-600 bg-orange-50 border border-orange-100/40">
+                              {item.period}
+                            </span>
+                          </div>
+
+                          <h4 className="text-zinc-900 font-extrabold text-xl mb-1 group-hover:text-orange-600 transition-colors tracking-tight">
+                            {item.role}
+                          </h4>
+                          
+                          <h5 className="text-zinc-500 font-bold text-[13px] mb-4">
+                            {item.organization}
+                          </h5>
+
+                          <p className="text-zinc-600 text-sm leading-relaxed font-medium">
+                            {item.description}
+                          </p>
+                        </motion.div>
+                      </div>
+
+                      {/* Right Column: Spacer */}
+                      <div className="hidden md:block w-[calc(50%-2.5rem)]" />
+                    </>
+                  ) : (
+                    <>
+                      {/* Left Column: Spacer */}
+                      <div className="hidden md:block w-[calc(50%-2.5rem)]" />
+
+                      {/* Right Column: Card */}
+                      <div className="w-full md:w-[calc(50%-2.5rem)] pl-16 md:pl-0">
+                        <motion.div
+                          initial={{ opacity: 0, x: 45 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ type: "spring", stiffness: 85, damping: 15 }}
+                          whileHover={{ 
+                            y: -6, 
+                            boxShadow: "0 20px 40px -15px rgba(255, 94, 20, 0.06)",
+                            borderColor: "rgba(234, 88, 12, 0.2)"
+                          }}
+                          className="bg-white border border-zinc-100 hover:border-orange-100/60 p-6 md:p-8 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.005)] transition-all duration-300 relative group flex flex-col"
+                        >
+                          {/* Period Badge */}
+                          <div className="flex mb-4 justify-start">
+                            <span className="inline-block px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase text-orange-600 bg-orange-50 border border-orange-100/40">
+                              {item.period}
+                            </span>
+                          </div>
+
+                          <h4 className="text-zinc-900 font-extrabold text-xl mb-1 group-hover:text-orange-600 transition-colors tracking-tight">
+                            {item.role}
+                          </h4>
+                          
+                          <h5 className="text-zinc-500 font-bold text-[13px] mb-4">
+                            {item.organization}
+                          </h5>
+
+                          <p className="text-zinc-600 text-sm leading-relaxed font-medium">
+                            {item.description}
+                          </p>
+                        </motion.div>
+                      </div>
+                    </>
+                  )}
+
                 </div>
-
-                {/* Content Card */}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200/50 dark:border-slate-800/50 shadow-sm"
-                >
-                  {/* Mobile Period Label */}
-                  <span className="inline-block md:hidden text-xs font-semibold text-rose-600 dark:text-rose-400 mb-2">
-                    {item.period}
-                  </span>
-                  
-                  <h4 className="text-xl font-display font-bold text-slate-900 dark:text-white leading-tight">
-                    {item.role}
-                  </h4>
-                  
-                  <h5 className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1">
-                    {item.organization}
-                  </h5>
-                  
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">
-                    {item.description}
-                  </p>
-                </motion.div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
 
         </div>
 

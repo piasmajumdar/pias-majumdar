@@ -1,9 +1,17 @@
 export const timelineData = [
   {
+    id: 3,
+    role: "B.Tech in Computer Science & Engineering",
+    organization: "VIT-AP University",
+    period: "2022 - 2026",
+    description: "Undergraduate course focusing on Algorithms, Deep Learning, Software Engineering, and AI-powered product implementations.",
+    type: "education"
+  },
+  {
     id: 1,
     role: "Internal Member",
     organization: "CSI Chapter, VIT-AP University",
-    period: "2024 - Present",
+    period: "2024 - 2025",
     description: "Assisted in organizing technical workshops, student bootcamps, and community engagement initiatives to foster collaborative coding practices.",
     type: "experience"
   },
@@ -11,18 +19,11 @@ export const timelineData = [
     id: 2,
     role: "Volunteer",
     organization: "Isha Foundation",
-    period: "2023 - Present",
+    period: "2021 - Present",
     description: "Active contributor in ecological preservation and mental wellbeing awareness campaigns, including local coordinates for the Save Soil initiative.",
     type: "volunteer"
   },
-  {
-    id: 3,
-    role: "B.Tech in Computer Science & Engineering",
-    organization: "VIT-AP University",
-    period: "2022 - Present",
-    description: "Undergraduate course focusing on Algorithms, Deep Learning, Software Engineering, and AI-powered product implementations.",
-    type: "education"
-  }
+
 ];
 
 export const scholarships = [
@@ -43,9 +44,9 @@ export const scholarships = [
 export const certifications = [
   {
     id: 1,
-    title: "Advanced Learning Algorithms",
-    issuer: "DeepLearning.AI & Stanford University",
-    date: "2024",
+    title: "Full-Stack Web Development",
+    issuer: "Programming Hero",
+    date: "2026",
     link: "#"
   },
   {
@@ -67,6 +68,13 @@ export const certifications = [
     title: "Introduction to Artificial Intelligence",
     issuer: "Simplilearn",
     date: "2023",
+    link: "#"
+  },
+  {
+    id: 5,
+    title: "Advanced Learning Algorithms",
+    issuer: "DeepLearning.AI & Stanford University",
+    date: "2024",
     link: "#"
   }
 ];
