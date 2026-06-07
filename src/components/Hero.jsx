@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
@@ -112,32 +113,39 @@ export default function Hero() {
 
             {/* Buttons */}
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button
-                size="lg"
-                radius="lg"
-                className="group bg-orange-600 hover:bg-orange-500 hover:scale-105 transition-all text-white px-8 font-medium shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:shadow-[0_0_30px_rgba(234,88,12,0.6)]"
-              >
-                <div className="flex items-center gap-2">
-                  <span>View My Work</span>
-                  <ArrowRight size={18} strokeWidth={2.5} className="transition-transform duration-300 group-hover:translate-x-1.5" />
-                </div>
-              </Button>
+              <Link href="#projects" className="inline-block">
+                <Button
+                  as="div"
+                  size="lg"
+                  radius="lg"
+                  className="group bg-orange-600 hover:bg-orange-500 hover:scale-105 transition-all text-white px-8 font-medium shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:shadow-[0_0_30px_rgba(234,88,12,0.6)] cursor-pointer"
+                >
+                  <div className="flex items-center gap-2">
+                    <span>View My Work</span>
+                    <ArrowRight size={18} strokeWidth={2.5} className="transition-transform duration-300 group-hover:translate-x-1.5" />
+                  </div>
+                </Button>
+              </Link>
 
-              <Button
-                as="a"
+              <a
                 href="https://drive.google.com/file/d/1cdZLuhxXI7b511bBiMWDBVuczv-2Dtzw/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                variant="bordered"
-                size="lg"
-                radius="lg"
-                className="group bg-white/80 hover:bg-white backdrop-blur-xl border-zinc-200 hover:border-zinc-300 hover:scale-105 transition-all font-medium text-zinc-800 shadow-sm hover:shadow-lg"
+                className="inline-block"
               >
-                <div className="flex items-center gap-2">
-                  <Download size={18} strokeWidth={2.5} className="transition-transform duration-300 group-hover:translate-y-1" />
-                  <span>Download CV</span>
-                </div>
-              </Button>
+                <Button
+                  as="div"
+                  variant="bordered"
+                  size="lg"
+                  radius="lg"
+                  className="group bg-white/80 hover:bg-white backdrop-blur-xl border-zinc-200 hover:border-zinc-300 hover:scale-105 transition-all font-medium text-zinc-800 shadow-sm hover:shadow-lg cursor-pointer"
+                >
+                  <div className="flex items-center gap-2">
+                    <Download size={18} strokeWidth={2.5} className="transition-transform duration-300 group-hover:translate-y-1" />
+                    <span>Download CV</span>
+                  </div>
+                </Button>
+              </a>
             </div>
 
             {/* Tech Stack */}
