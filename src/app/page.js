@@ -39,7 +39,7 @@ export default function Home() {
         {/* <Certifications /> */}
 
         {/* Contact Form using Web3Forms Server Action */}
-        {/* <Contact /> */}
+        <Contact />
       </main>
 
       {/* Signature Footer */}
