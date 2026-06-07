@@ -191,7 +191,7 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.6 }}
           className="flex flex-col items-center text-center mb-20"
         >
@@ -214,7 +214,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.6 }}
             className="lg:col-span-5 flex flex-col"
           >
@@ -236,7 +236,7 @@ export default function About() {
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: false, margin: "-100px" }}
               className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-6"
             >
               {traits.map((trait, index) => {
@@ -272,7 +272,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.6 }}
             className="lg:col-span-4 flex justify-center"
           >
@@ -374,7 +374,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.6 }}
             className="lg:col-span-3 relative pl-8 lg:pl-10"
           >
@@ -383,7 +383,7 @@ export default function About() {
               <motion.div
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
                 className="w-2.5 h-2.5 rounded-full bg-orange-600 shadow-[0_0_12px_rgba(234,88,12,0.8)] z-10"
               />
@@ -400,7 +400,7 @@ export default function About() {
                     strokeDasharray="4 4"
                     initial={{ pathLength: 0 }}
                     whileInView={{ pathLength: 1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false }}
                     transition={{ duration: 1.2, ease: "easeInOut", delay: 0.3 }}
                   />
                 </svg>
@@ -409,7 +409,7 @@ export default function About() {
               <motion.div
                 initial={{ scale: 0, y: -10 }}
                 whileInView={{ scale: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: 1.2, type: "spring", stiffness: 150 }}
                 animate={{ y: [0, 4, 0] }}
                 transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
@@ -424,7 +424,7 @@ export default function About() {
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: false, margin: "-100px" }}
               className="flex flex-col gap-5"
             >
               {stats.map((stat, index) => {
@@ -467,7 +467,7 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-20 border border-zinc-100 bg-zinc-50/40 rounded-[32px] p-8 lg:p-10 shadow-sm relative overflow-hidden"
         >
@@ -479,7 +479,7 @@ export default function About() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 gap-4 justify-items-center items-center"
           >
             {technologies.map((tech, index) => {

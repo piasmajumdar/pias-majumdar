@@ -56,7 +56,7 @@ export default function Projects() {
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.6 }}
           className="flex flex-col items-center text-center mb-16"
         >
@@ -117,7 +117,13 @@ export default function Projects() {
         </div>
 
         {/* Grid of Projects */}
-        <div className="min-h-[450px]">
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="min-h-[450px]"
+        >
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -231,7 +237,7 @@ export default function Projects() {
               ))}
             </motion.div>
           </AnimatePresence>
-        </div>
+        </motion.div>
 
         {/* View All Projects Button */}
         <div className="flex justify-center mt-12">

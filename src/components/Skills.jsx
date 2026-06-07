@@ -175,7 +175,7 @@ export default function Skills() {
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.6 }}
           className="flex flex-col items-center text-center mb-16"
         >
@@ -200,7 +200,13 @@ export default function Skills() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-start">
           
           {/* Left Column: Web Engineering */}
-          <div className="flex flex-col w-full max-w-xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col w-full max-w-xl mx-auto"
+          >
             {/* Toggle Bar - Professional Text-only Double-layer Outline capsules */}
             <div className="flex overflow-x-auto no-scrollbar p-1.5 bg-white border border-zinc-200/50 rounded-[24px] mb-8 shadow-[0_6px_25px_rgba(0,0,0,0.01)] backdrop-blur-xl shrink-0">
               <div className="flex items-center w-full gap-1">
@@ -323,10 +329,16 @@ export default function Skills() {
                 )}
               </AnimatePresence>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: AI & Machine Learning */}
-          <div className="flex flex-col w-full max-w-xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col w-full max-w-xl mx-auto"
+          >
             {/* Toggle Bar - Professional Text-only Double-layer Outline capsules */}
             <div className="flex overflow-x-auto no-scrollbar p-1.5 bg-white border border-zinc-200/50 rounded-[24px] mb-8 shadow-[0_6px_25px_rgba(0,0,0,0.01)] backdrop-blur-xl shrink-0">
               <div className="flex items-center w-full gap-1">
@@ -449,7 +461,7 @@ export default function Skills() {
                 )}
               </AnimatePresence>
             </div>
-          </div>
+          </motion.div>
 
         </div>
 

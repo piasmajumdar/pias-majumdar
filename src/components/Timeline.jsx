@@ -27,7 +27,7 @@ export default function Timeline() {
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.6 }}
           className="flex flex-col items-center text-center mb-20"
         >
@@ -54,7 +54,7 @@ export default function Timeline() {
           <motion.div 
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
             className="absolute left-6 md:left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-orange-600 via-orange-400 to-orange-100/20 origin-top"
           />
@@ -73,7 +73,7 @@ export default function Timeline() {
                   <motion.div
                     initial={{ scale: 0, x: "-50%" }}
                     whileInView={{ scale: 1, x: "-50%" }}
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ once: false, margin: "-100px" }}
                     transition={{ type: "spring", stiffness: 200, damping: 15, delay: idx * 0.1 }}
                     className="absolute left-6 md:left-1/2 z-20 w-10 h-10 rounded-full bg-white border-2 border-orange-600 flex items-center justify-center text-orange-600 shadow-[0_0_15px_rgba(234,88,12,0.15)] group hover:bg-orange-600 hover:text-white transition-colors duration-300 cursor-default"
                   >
@@ -88,7 +88,7 @@ export default function Timeline() {
                         <motion.div
                           initial={{ opacity: 0, x: -45 }}
                           whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true, margin: "-100px" }}
+                          viewport={{ once: false, margin: "-100px" }}
                           transition={{ type: "spring", stiffness: 85, damping: 15 }}
                           whileHover={{ 
                             y: -6, 
@@ -131,7 +131,7 @@ export default function Timeline() {
                         <motion.div
                           initial={{ opacity: 0, x: 45 }}
                           whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true, margin: "-100px" }}
+                          viewport={{ once: false, margin: "-100px" }}
                           transition={{ type: "spring", stiffness: 85, damping: 15 }}
                           whileHover={{ 
                             y: -6, 
