@@ -1,6 +1,7 @@
 import Providers from "./providers";
 import CustomCursor from "@/components/CustomCursor";
 import Preloader from "@/components/Preloader";
+import FloatingDock from "@/components/FloatingDock";
 import "./globals.css";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
@@ -33,7 +34,10 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col">
         <Preloader />
         <CustomCursor />
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <FloatingDock />
+        </Providers>
       </body>
     </html>
   );
