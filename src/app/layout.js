@@ -13,18 +13,33 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "Pias Majumdar | AI/ML Engineer & Full Stack Developer",
-  description: "Portfolio of Pias Majumdar, building AI-powered web products. Specializing in deep learning, multimodal architectures, and production-ready full-stack applications.",
+  metadataBase: new URL("https://pias-majumdar.vercel.app"),
+  title: "Pias Majumdar | Full Stack & Developer AI/ML Engineer",
+  description: "Hi, I'm Pias Majumdar. I build intelligent AI-powered web products. Specializing in deep learning, multimodal architectures, and production-ready full-stack applications.",
   keywords: ["AI/ML Engineer", "Full Stack Developer", "Deep Learning", "Next.js", "Pias Majumdar", "VIT-AP"],
   authors: [{ name: "Pias Majumdar" }],
   creator: "Pias Majumdar",
   openGraph: {
     title: "Pias Majumdar | AI/ML Engineer & Full Stack Developer",
-    description: "Building intelligent AI-powered web products. Exploring NLP, Computer Vision, and Time Series Forecasting.",
-    url: "https://piasmajumdar.vercel.app",
+    description: "Hi, I'm Pias Majumdar. I build intelligent AI-powered web products. Exploring NLP, Computer Vision, and Time Series Forecasting.",
+    url: "https://pias-majumdar.vercel.app",
     siteName: "Pias Majumdar Portfolio",
+    images: [
+      {
+        url: "/pias-v2.png",
+        width: 800,
+        height: 800,
+        alt: "Pias Majumdar",
+      },
+    ],
     locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pias Majumdar | AI/ML Engineer & Full Stack Developer",
+    description: "Hi, I'm Pias Majumdar. I build intelligent AI-powered web products. Exploring NLP, Computer Vision, and Time Series Forecasting.",
+    images: ["/pias-v2.png"],
   },
 };
 
