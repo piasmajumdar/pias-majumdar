@@ -14,14 +14,14 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata = {
   metadataBase: new URL("https://pias-majumdar.vercel.app"),
-  title: "Pias Majumdar | Full Stack & Developer AI/ML Engineer",
-  description: "Hi, I'm Pias Majumdar. I build intelligent AI-powered web products. Specializing in deep learning, multimodal architectures, and production-ready full-stack applications.",
+  title: "Pias Majumdar | Full Stack Developer & AI/ML Engineer",
+  description: "Hi, I'm Pias Majumdar. A Full-Stack Engineer who codes at the intersection of robust backend architecture and interactive frontend design, powered by intelligent AI models.",
   keywords: ["AI/ML Engineer", "Full Stack Developer", "Deep Learning", "Next.js", "Pias Majumdar", "VIT-AP"],
   authors: [{ name: "Pias Majumdar" }],
   creator: "Pias Majumdar",
   openGraph: {
-    title: "Pias Majumdar | AI/ML Engineer & Full Stack Developer",
-    description: "Hi, I'm Pias Majumdar. I build intelligent AI-powered web products. Exploring NLP, Computer Vision, and Time Series Forecasting.",
+    title: "Pias Majumdar | Full Stack Developer & AI/ML Engineer",
+    description: "Hi, I'm Pias Majumdar. A Full-Stack Engineer who codes at the intersection of robust backend architecture and interactive frontend design, powered by intelligent AI models.",
     url: "https://pias-majumdar.vercel.app",
     siteName: "Pias Majumdar Portfolio",
     images: [
@@ -37,8 +37,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pias Majumdar | AI/ML Engineer & Full Stack Developer",
-    description: "Hi, I'm Pias Majumdar. I build intelligent AI-powered web products. Exploring NLP, Computer Vision, and Time Series Forecasting.",
+    title: "Pias Majumdar | Full Stack Developer & AI/ML Engineer",
+    description: "Hi, I'm Pias Majumdar. A Full-Stack Engineer who codes at the intersection of robust backend architecture and interactive frontend design, powered by intelligent AI models.",
     images: ["/pias-v2.png"],
   },
 };
