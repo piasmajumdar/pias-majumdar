@@ -1,9 +1,9 @@
 export const challengePosts = [
   // Example 1: LinkedIn iframe post (only has the iframe/link)
 
-  {
-    iframe: '<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7464335094694961152?collapsed=1" height="559" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>'
-  },
+  // {
+  //   iframe: '<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7464335094694961152?collapsed=1" height="559" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>'
+  // },
   {
     day: 64,
     title: "Performance Optimization with Dynamic Imports & Script Loading",
