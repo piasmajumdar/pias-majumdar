@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { projects } from "../data/projects";
-import { ExternalLink, Code2, ArrowRight } from "lucide-react";
+import { ExternalLink, Code2, ArrowRight, MoveUpRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
@@ -34,10 +34,10 @@ export default function Projects() {
 
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { type: "spring", stiffness: 80, damping: 15 } 
+      transition: { type: "spring", stiffness: 80, damping: 15 }
     }
   };
 
@@ -53,7 +53,7 @@ export default function Projects() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: "-100px" }}
@@ -67,7 +67,7 @@ export default function Projects() {
             </span>
             <div className="w-6 h-[1.5px] bg-orange-600/40" />
           </div>
-          
+
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-zinc-900 tracking-tight leading-tight">
             Featured <span className="text-orange-600">Projects</span>
           </h2>
@@ -86,9 +86,8 @@ export default function Projects() {
                   <div key={tab.id} className="relative flex items-center">
                     <button
                       onClick={() => setActiveTab(tab.id)}
-                      className={`relative px-6 py-3 rounded-[18px] text-[13px] font-bold tracking-tight cursor-pointer transition-colors duration-300 select-none z-10 min-w-[150px] sm:min-w-[180px] ${
-                        isActive ? "text-orange-600 font-extrabold" : "text-zinc-600 hover:text-orange-600"
-                      }`}
+                      className={`relative px-6 py-3 rounded-[18px] text-[13px] font-bold tracking-tight cursor-pointer transition-colors duration-300 select-none z-10 min-w-[150px] sm:min-w-[180px] ${isActive ? "text-orange-600 font-extrabold" : "text-zinc-600 hover:text-orange-600"
+                        }`}
                     >
                       {isActive && (
                         <>
@@ -117,7 +116,7 @@ export default function Projects() {
         </div>
 
         {/* Grid of Projects */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: "-100px" }}
@@ -137,16 +136,16 @@ export default function Projects() {
                 <motion.div
                   key={project.id}
                   variants={cardVariants}
-                  whileHover={{ 
-                    y: -8, 
+                  whileHover={{
+                    y: -8,
                     boxShadow: "0 25px 50px -12px rgba(255, 94, 20, 0.08)"
                   }}
                   className="bg-white border border-zinc-100 hover:border-orange-100/60 rounded-[32px] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.005)] transition-all duration-300 w-full md:w-[350px] lg:w-[370px] flex flex-col group"
                 >
                   {/* Card Image Cover */}
                   <div className="relative h-48 w-full overflow-hidden shrink-0">
-                    <Image 
-                      src={project.image} 
+                    <Image
+                      src={project.image}
                       alt={project.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out select-none pointer-events-none"
@@ -159,7 +158,7 @@ export default function Projects() {
                     <h3 className="text-zinc-900 font-extrabold text-xl mb-3 tracking-tight group-hover:text-orange-600 transition-colors leading-tight">
                       {project.title}
                     </h3>
-                    
+
                     <p className="text-zinc-500 text-[13px] leading-relaxed mb-6 font-medium flex-1">
                       {project.description}
                     </p>
@@ -167,7 +166,7 @@ export default function Projects() {
                     {/* Tech Badges List */}
                     <div className="flex flex-wrap gap-2 mb-6 shrink-0">
                       {project.tech.slice(0, 5).map((t) => (
-                        <span 
+                        <span
                           key={t}
                           className="px-2.5 py-1 text-[11px] font-extrabold text-zinc-600 bg-zinc-50 border border-zinc-200/50 rounded-lg cursor-default transition-all hover:bg-orange-50 hover:text-orange-600 hover:border-orange-100/40"
                         >
@@ -183,11 +182,11 @@ export default function Projects() {
 
                     {/* Action Links */}
                     <div className="flex items-center gap-4 mt-auto pt-4 border-t border-zinc-100 shrink-0">
-                      <motion.a 
+                      <motion.a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        whileHover={{ 
+                        whileHover={{
                           scale: 1.05,
                           borderColor: "rgb(234, 88, 12)",
                           color: "rgb(234, 88, 12)"
@@ -198,9 +197,9 @@ export default function Projects() {
                         <FaGithub size={12} />
                         <span>Code</span>
                       </motion.a>
-                      
+
                       {project.demo && project.demo !== "#" && (
-                        <motion.a 
+                        <motion.a
                           href={project.demo}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -217,7 +216,7 @@ export default function Projects() {
                             repeat: Infinity,
                             ease: "easeInOut"
                           }}
-                          whileHover={{ 
+                          whileHover={{
                             scale: 1.08,
                             backgroundColor: "rgb(234, 88, 12)",
                             borderColor: "rgb(234, 88, 12)",
@@ -239,14 +238,21 @@ export default function Projects() {
           </AnimatePresence>
         </motion.div>
 
-        {/* View All Projects Button */}
-        <div className="flex justify-center mt-12">
-          <Link 
-            href="/projects" 
+        {/* Action Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
+          <Link
+            href="/projects"
             className="group flex items-center gap-2 px-6 py-3 border-2 border-orange-600 rounded-full font-bold text-sm text-orange-600 hover:bg-orange-600 hover:text-white transition-all duration-300 shadow-[0_4px_12px_rgba(234,88,12,0.05)] hover:shadow-[0_4px_20px_rgba(234,88,12,0.2)]"
           >
             <span>View All Projects</span>
             <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+          <Link
+            href="/challenge"
+            className="group flex items-center gap-2 px-6 py-3 border-2 border-orange-600 rounded-full font-bold text-sm text-orange-600 hover:bg-orange-600 hover:text-white transition-all duration-300 shadow-[0_4px_12px_rgba(234,88,12,0.05)] hover:shadow-[0_4px_20px_rgba(234,88,12,0.2)]"
+          >
+            <span>View my 100 Steps Challenge Progress</span>
+            <MoveUpRight size={16} className="transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
           </Link>
         </div>
 

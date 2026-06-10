@@ -30,7 +30,7 @@ export default function ContactForm({ onSuccess }) {
         setStatus({
           submitting: false,
           success: true,
-          message: "Form Submitted Successfully"
+          message: "Message Sent Successfully"
         });
         e.target.reset();
         if (onSuccess) {
@@ -111,8 +111,8 @@ export default function ContactForm({ onSuccess }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             className={`flex items-start gap-3 p-4 rounded-2xl text-sm font-medium ${status.success
-                ? "bg-emerald-50 border border-emerald-100 text-emerald-800"
-                : "bg-red-50 border border-red-100 text-red-800"
+              ? "bg-emerald-50 border border-emerald-100 text-emerald-800"
+              : "bg-red-50 border border-red-100 text-red-800"
               }`}
           >
             {status.success ? (
