@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ArrowUpRight } from "@gravity-ui/icons";
 import { Menu, X } from "lucide-react";
 import { useRouter, usePathname } from "next/navigation";
@@ -21,6 +21,7 @@ export default function Navbar() {
   const [hidden, setHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const isProgrammaticScroll = useRef(false);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -66,6 +67,8 @@ export default function Navbar() {
     
     if (pathname === "/") {
       e.preventDefault();
+      isProgrammaticScroll.current = true;
+      setHidden(false);
       
       if (item === "Home") {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -79,6 +82,10 @@ export default function Navbar() {
           setActiveSection(targetId);
         }
       }
+
+      setTimeout(() => {
+        isProgrammaticScroll.current = false;
+      }, 1000);
     } else {
       if (typeof window !== "undefined" && window.location.hash === `#${targetId}`) {
         e.preventDefault();
@@ -99,6 +106,8 @@ export default function Navbar() {
     const previous = scrollY.getPrevious();
 
     if (!previous) return;
+    if (isProgrammaticScroll.current) return;
+    if (isMobileMenuOpen) return;
 
     if (latest > previous && latest > 150) {
       setHidden(true);
@@ -117,7 +126,7 @@ export default function Navbar() {
       transition={{
         duration: 0.35,
       }}
-      className="fixed top-6 left-0 right-0 z-500 px-6"
+      className="fixed top-6 left-0 right-0 z-[500] px-6"
     >
       <div
         className="
@@ -229,43 +238,47 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Dropdown Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden overflow-hidden border-t border-orange-100/50"
-            >
-              <div className="flex flex-col px-8 py-8 gap-6 bg-white/40">
-                {navItems.map((item) => {
-                  const active = item.toLowerCase() === activeSection;
-                  return (
-                    <Link
-                      key={item}
-                      href={item === "Home" ? "/" : `/#${item.toLowerCase()}`}
-                      onClick={(e) => {
-                        setIsMobileMenuOpen(false);
-                        handleNavClick(e, item);
-                      }}
-                      className={`text-2xl font-semibold transition-colors ${
-                        active ? "text-orange-600" : "text-zinc-800 hover:text-orange-600"
-                      }`}
-                    >
-                      {item}
-                    </Link>
-                  );
-                })}
-                <Link href="/#contact" onClick={(e) => { setIsMobileMenuOpen(false); handleNavClick(e, "Contact"); }} className="w-full">
-                  <div className="flex items-center justify-center gap-3 mt-6 rounded-2xl bg-gradient-to-r from-orange-600 to-red-600 px-6 py-4 text-white font-medium shadow-md w-full cursor-pointer">
-                    <span>Let's Connect</span>
-                    <ArrowUpRight width={18} height={18} />
-                  </div>
-                </Link>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            className="lg:hidden overflow-hidden border-t border-orange-100/50"
+          >
+            <div className="flex flex-col px-8 py-8 gap-6 bg-white/40">
+              {navItems.map((item) => {
+                const active = item.toLowerCase() === activeSection;
+                return (
+                  <a
+                    key={item}
+                    href={item === "Home" ? "/" : `/#${item.toLowerCase()}`}
+                    onClick={(e) => {
+                      setIsMobileMenuOpen(false);
+                      handleNavClick(e, item);
+                    }}
+                    className={`text-2xl font-semibold transition-colors ${
+                      active ? "text-orange-600" : "text-zinc-800 hover:text-orange-600"
+                    }`}
+                  >
+                    {item}
+                  </a>
+                );
+              })}
+              <a
+                href="/#contact"
+                onClick={(e) => {
+                  setIsMobileMenuOpen(false);
+                  handleNavClick(e, "Contact");
+                }}
+                className="w-full"
+              >
+                <div className="flex items-center justify-center gap-3 mt-6 rounded-2xl bg-gradient-to-r from-orange-600 to-red-600 px-6 py-4 text-white font-medium shadow-md w-full cursor-pointer">
+                  <span>Let's Connect</span>
+                  <ArrowUpRight width={18} height={18} />
+                </div>
+              </a>
+            </div>
+          </motion.div>
+        )}
       </div>
     </motion.header>
   );

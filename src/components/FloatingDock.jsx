@@ -106,7 +106,7 @@ export default function FloatingDock() {
         dragElastic={0.15}
         dragMomentum={false}
         onDragEnd={handleDragEnd}
-        className="fixed right-6 top-[35%] z-700 bg-white/90 border border-zinc-200/85 rounded-[32px] py-5 px-3 shadow-2xl flex flex-col items-center gap-4 cursor-grab active:cursor-grabbing text-zinc-800 w-[54px] select-none backdrop-blur-xl transition-shadow duration-300 hover:shadow-orange-500/5"
+        className="fixed right-6 top-[35%] z-[700] bg-white/90 border border-zinc-200/85 rounded-[32px] py-5 px-3 shadow-2xl flex flex-col items-center gap-4 cursor-grab active:cursor-grabbing text-zinc-800 w-[54px] select-none backdrop-blur-xl transition-shadow duration-300 hover:shadow-orange-500/5"
       >
         {/* Drag Handle Top (Small dot in circle) */}
         <div className="w-6 h-6 flex items-center justify-center opacity-65 hover:opacity-100 transition-opacity">
