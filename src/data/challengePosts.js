@@ -3,6 +3,9 @@ export const challengePosts = [
 
 
   {
+    iframe: `<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7472509045892005888?collapsed=1" height="517" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>`
+  },
+  {
     iframe: `<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7471975228143841280?collapsed=1" height="593" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>`
   },
   {
