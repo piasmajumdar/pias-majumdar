@@ -1,7 +1,12 @@
 export const challengePosts = [
   // Example 1: LinkedIn iframe post (only has the iframe/link)
 
-
+  {
+    iframe: `<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7473478480970571776?collapsed=1" height="593" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>`
+  },
+  {
+    iframe: `<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7473477620676943872?collapsed=1" height="229" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>`
+  },
   {
     iframe: `<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7472509045892005888?collapsed=1" height="517" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>`
   },
