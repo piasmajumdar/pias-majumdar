@@ -11,7 +11,9 @@ import Link from "next/link";
 export default function Projects() {
   const [activeTab, setActiveTab] = useState("web"); // "web" or "ai"
 
-  const filteredProjects = projects.filter(project => project.featured === true);
+  const filteredProjects = projects.filter(
+    (project) => project.featured === true && project.category === activeTab
+  );
 
   // Tab configuration
   const tabs = [
