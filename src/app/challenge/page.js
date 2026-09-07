@@ -13,19 +13,77 @@ import ChallengePostModal from "../../components/ChallengePostModal";
 export default function ChallengePage() {
   const [selectedPost, setSelectedPost] = useState(null);
 
-  // Normalize posts to ensure every post has an associated day and unique ID
-  const normalizedPosts = challengePosts.map((post, idx) => {
-    const inferredDay = post.day || (challengePosts.length - idx);
+  // Helper to normalize challenge posts with support for single days and day ranges (e.g. Days 72-78)
+  const parsePostDays = (post) => {
+    let startDay = null;
+    let endDay = null;
+
+    if (post.startDay !== undefined && post.endDay !== undefined) {
+      startDay = Number(post.startDay);
+      endDay = Number(post.endDay);
+    } else if (typeof post.day === "string" && post.day.includes("-")) {
+      const parts = post.day.split("-").map((s) => Number(s.trim()));
+      startDay = parts[0];
+      endDay = parts[1];
+    } else if (post.day !== undefined && !isNaN(Number(post.day))) {
+      startDay = Number(post.day);
+      endDay = Number(post.day);
+    }
+
+    return { startDay, endDay };
+  };
+
+  // Step 1: Pre-parse explicit days
+  const parsedPosts = challengePosts.map((post) => ({
+    ...post,
+    ...parsePostDays(post)
+  }));
+
+  // Step 2: Infer days for posts missing explicit day data
+  const firstKnownIdx = parsedPosts.findIndex((p) => p.startDay !== null);
+
+  if (firstKnownIdx !== -1) {
+    // Fill backwards from firstKnownIdx up to index 0
+    let anchorEnd = parsedPosts[firstKnownIdx].endDay;
+    for (let i = firstKnownIdx - 1; i >= 0; i--) {
+      anchorEnd += 1;
+      parsedPosts[i].startDay = anchorEnd;
+      parsedPosts[i].endDay = anchorEnd;
+    }
+
+    // Fill forwards for any remaining unassigned posts
+    for (let i = 0; i < parsedPosts.length; i++) {
+      if (parsedPosts[i].startDay === null) {
+        const prevStart = parsedPosts[i - 1].startDay;
+        parsedPosts[i].startDay = prevStart - 1;
+        parsedPosts[i].endDay = prevStart - 1;
+      }
+    }
+  } else {
+    // Fallback if no explicit days found anywhere
+    for (let i = 0; i < parsedPosts.length; i++) {
+      const d = parsedPosts.length - i;
+      parsedPosts[i].startDay = d;
+      parsedPosts[i].endDay = d;
+    }
+  }
+
+  // Step 3: Format final normalized post objects
+  const normalizedPosts = parsedPosts.map((post) => {
+    const isRange = post.startDay !== post.endDay;
+    const dayLabel = isRange ? `${post.startDay}-${post.endDay}` : `${post.startDay}`;
+
     return {
       ...post,
-      id: post.id || `challenge-day-${inferredDay}`,
-      day: inferredDay
+      id: post.id || `challenge-day-${dayLabel}`,
+      day: dayLabel,
+      dayLabel,
+      isRange
     };
   });
 
   // Compute stats based on normalized posts
-  const totalDays = normalizedPosts.length;
-  const latestDay = normalizedPosts.length > 0 ? Math.max(...normalizedPosts.map(p => p.day)) : 0;
+  const latestDay = normalizedPosts.length > 0 ? Math.max(...normalizedPosts.map((p) => p.endDay)) : 0;
   const progressPercent = Math.min(Math.round((latestDay / 100) * 100), 100);
 
   return (
@@ -92,7 +150,7 @@ export default function ChallengePage() {
                   Total Posts Added
                 </span>
                 <span className="text-2xl font-black text-zinc-800">
-                  {totalDays} {totalDays === 1 ? "Update" : "Updates"}
+                  {latestDay} {latestDay === 1 ? "Update" : "Updates"}
                 </span>
               </div>
 

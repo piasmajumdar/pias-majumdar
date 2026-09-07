@@ -2,6 +2,8 @@ export const challengePosts = [
   // Example 1: LinkedIn iframe post (only has the iframe/link)
 
   {
+    startDay: 72,
+    endDay: 78,
     iframe: `<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7502530886643642368?collapsed=1" height="593" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>`
   },
   {

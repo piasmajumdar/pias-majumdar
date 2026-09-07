@@ -79,7 +79,7 @@ export default function ChallengePostModal({ post, onClose }) {
                 <div className="flex items-center gap-2">
                   {post.day ? (
                     <span className="px-2.5 py-1 text-[11px] font-extrabold text-orange-600 bg-orange-50 border border-orange-100/40 rounded-lg">
-                      Step {post.day}
+                      {post.isRange ? `Days ${post.day}` : `Step ${post.day}`}
                     </span>
                   ) : (
                     <span className="px-2.5 py-1 text-[11px] font-extrabold text-orange-600 bg-orange-50 border border-orange-100/40 rounded-lg">
