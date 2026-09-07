@@ -69,7 +69,7 @@ export const projects = [
       "OpenStreetMap"
     ],
     category: "web",
-    featured: true,
+    featured: false,
     github: "https://github.com/piasmajumdar/local-discovery-2",
     demo: "https://localdiscovery.online/",
     image: "/projects/local-discovery.png"
@@ -167,5 +167,32 @@ export const projects = [
     github: "https://github.com/piasmajumdar/keen-keeper",
     demo: "https://keen-keeper-pias.netlify.app/",
     image: "/projects/keen-keeper.png"
+  },
+  {
+    id: 10,
+    title: "SkillSwap",
+    description:
+      "Modern freelance marketplace that connects clients with skilled freelancers for reliable and flexible project collaboration.",
+    details:
+      "SkillSwap is a full-stack freelance marketplace where clients can publish tasks, review proposals, hire freelancers, make secure payments through Stripe, and submit reviews. Freelancers can browse available tasks, submit proposals, manage active projects, deliver completed work, track earnings, and maintain professional profiles. The platform also includes administrator tools for managing users, tasks, payments, and account access.",
+    tech: [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "HeroUI",
+      "Express.js",
+      "MongoDB",
+      "Better Auth",
+      "JWT",
+      "Stripe",
+      "React Icons",
+      "Motion",
+      "npm"
+    ],
+    category: "web",
+    featured: true,
+    github: "https://github.com/piasmajumdar/skillswap",
+    demo: "https://skillswap-nine-amber.vercel.app/",
+    image: "/projects/skillswap.jpg"
   }
 ];
