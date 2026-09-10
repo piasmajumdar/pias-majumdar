@@ -128,7 +128,7 @@ export default function Hero() {
               </Link>
 
               <a
-                href="https://drive.google.com/file/d/1cdZLuhxXI7b511bBiMWDBVuczv-2Dtzw/view?usp=sharing"
+                href="https://docs.google.com/document/d/1Z0LrGGLbi75mtJMS1BjDaQ9nGQ1bYHDns-T_rRbQj4s/edit?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block"
