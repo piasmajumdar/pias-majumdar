@@ -256,7 +256,7 @@ export default function Hero() {
                 </svg>
 
                 {/* Moving Glow Dot (Back half) */}
-                <motion.div
+                {/* <motion.div
                   className="
                   absolute
                   h-4
@@ -279,7 +279,7 @@ export default function Hero() {
                     left: "-8px",
                     top: "-8px",
                   }}
-                />
+                /> */}
               </div>
 
               {/* Profile Image (Static, NO motion y animation) */}
