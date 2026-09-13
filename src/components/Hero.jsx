@@ -363,7 +363,7 @@ export default function Hero() {
               {/* </div> */}
 
               {/* Floating Cards */}
-              <FloatingCard
+              {/* <FloatingCard
                 icon={<Code width={28} />}
                 className="left-0 top-44 z-40"
                 delay={0}
@@ -379,7 +379,7 @@ export default function Hero() {
                 icon={<ChartColumn width={28} />}
                 className="right-0 bottom-40 z-40"
                 delay={2}
-              />
+              /> */}
 
             </div>
 
