@@ -336,7 +336,7 @@ export default function Hero() {
                 </svg>
 
                 {/* Moving Glow Dot (Front half) */}
-                <motion.div
+                {/* <motion.div
                   className="
                   absolute
                   h-4
@@ -359,7 +359,7 @@ export default function Hero() {
                     left: "-8px",
                     top: "-8px",
                   }}
-                />
+                /> */}
               </div>
 
               {/* Floating Cards */}
