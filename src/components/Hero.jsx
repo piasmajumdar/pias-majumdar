@@ -223,11 +223,11 @@ export default function Hero() {
               <div className="absolute inset-20 rounded-full border border-dashed border-orange-300/20 z-0" />
 
               {/* Tilted Main Orbit - BACK HALF (Behind Avatar) */}
-              <div
+              {/* <div
                 className="absolute inset-0 rotate-[35deg] scale-110 z-10"
                 style={{ clipPath: "inset(0 0 50% 0)" }}
-              >
-                <svg
+              > */}
+              {/* <svg
                   className="w-full h-full"
                   viewBox="0 0 700 700"
                 >
@@ -253,10 +253,10 @@ export default function Hero() {
                     strokeWidth="3"
                     opacity="0.4"
                   />
-                </svg>
+                </svg> */}
 
-                {/* Moving Glow Dot (Back half) */}
-                {/* <motion.div
+              {/* Moving Glow Dot (Back half) */}
+              {/* <motion.div
                   className="
                   absolute
                   h-4
@@ -280,7 +280,7 @@ export default function Hero() {
                     top: "-8px",
                   }}
                 /> */}
-              </div>
+              {/* </div> */}
 
               {/* Profile Image (Static, NO motion y animation) */}
               <div className="absolute inset-0 flex items-center justify-center z-20">
@@ -298,11 +298,11 @@ export default function Hero() {
               </div>
 
               {/* Tilted Main Orbit - FRONT HALF (In front of Avatar) */}
-              <div
+              {/* <div
                 className="absolute inset-0 rotate-[35deg] scale-110 z-30 pointer-events-none"
                 style={{ clipPath: "inset(50% 0 0 0)" }}
-              >
-                <svg
+              > */}
+              {/* <svg
                   className="w-full h-full"
                   viewBox="0 0 700 700"
                 >
@@ -333,10 +333,10 @@ export default function Hero() {
                     strokeWidth="6"
                     filter="url(#glowEffect)"
                   />
-                </svg>
+                </svg> */}
 
-                {/* Moving Glow Dot (Front half) */}
-                {/* <motion.div
+              {/* Moving Glow Dot (Front half) */}
+              {/* <motion.div
                   className="
                   absolute
                   h-4
@@ -360,7 +360,7 @@ export default function Hero() {
                     top: "-8px",
                   }}
                 /> */}
-              </div>
+              {/* </div> */}
 
               {/* Floating Cards */}
               <FloatingCard
